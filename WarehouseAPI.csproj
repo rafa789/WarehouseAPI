@@ -5,9 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="WarehouseAPI.Data\**" />
+    <Compile Remove="WarehouseAPI.Model\**" />
+    <Content Remove="WarehouseAPI.Data\**" />
+    <Content Remove="WarehouseAPI.Model\**" />
+    <EmbeddedResource Remove="WarehouseAPI.Data\**" />
+    <EmbeddedResource Remove="WarehouseAPI.Model\**" />
+    <None Remove="WarehouseAPI.Data\**" />
+    <None Remove="WarehouseAPI.Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="MySql.Data" Version="8.0.23" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="WarehouseAPI.Data\WarehouseAPI.Data.csproj" />
+    <ProjectReference Include="WarehouseAPI.Model\WarehouseAPI.Model.csproj" />
   </ItemGroup>
 
 </Project>
