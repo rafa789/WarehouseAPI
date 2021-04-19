@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseAPI", "WarehouseAPI.csproj", "{35130801-2FD4-4BAB-9958-AB0F84CB9252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseAPI", "WarehouseAPI.csproj", "{35130801-2FD4-4BAB-9958-AB0F84CB9252}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseAPI.Model", "WarehouseAPI.Model\WarehouseAPI.Model.csproj", "{BADC0AD6-7030-4A39-8182-61EBA20AFC8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseAPI.Data", "WarehouseAPI.Data\WarehouseAPI.Data.csproj", "{8D740ABC-0E17-4B70-B9A5-1D8E8467FD87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{35130801-2FD4-4BAB-9958-AB0F84CB9252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35130801-2FD4-4BAB-9958-AB0F84CB9252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35130801-2FD4-4BAB-9958-AB0F84CB9252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BADC0AD6-7030-4A39-8182-61EBA20AFC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BADC0AD6-7030-4A39-8182-61EBA20AFC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BADC0AD6-7030-4A39-8182-61EBA20AFC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BADC0AD6-7030-4A39-8182-61EBA20AFC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D740ABC-0E17-4B70-B9A5-1D8E8467FD87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D740ABC-0E17-4B70-B9A5-1D8E8467FD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D740ABC-0E17-4B70-B9A5-1D8E8467FD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D740ABC-0E17-4B70-B9A5-1D8E8467FD87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
