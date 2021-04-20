@@ -9,10 +9,11 @@ namespace WarehouseAPI.Data.Repositories
 {
     public interface IOrderRepository
     {
-        Task<IEnumerable<Order>> GetAllOrders();
-        Task<Order> GetOrderById(int id);
+        Task<IEnumerable<OrderVM>> GetAllOrders();
+        Task<OrderVM> GetOrderById(int id);
         Task<bool> SaveOrder(Order o);
-        Task<bool> UpdateOrder(Order o);
+       
         Task<bool> CancelOrder(int id);
+        Task<bool> CompleteOrder(int id);
     }
 }

@@ -1,37 +1,68 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WarehouseAPI.Model;
+using Dapper;
 
 namespace WarehouseAPI.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        public Task<bool> CancelProduct(int id)
+        private  MySqlConnection _connection;
+
+        public ProductRepository(MySqlConnection connection)
         {
-            throw new NotImplementedException();
+            _connection = connection;
         }
 
-        public Task<IEnumerable<Products>> GetAllProducts()
+        public async Task<bool> CancelProduct(int id)
         {
-            throw new NotImplementedException();
+            var query = "update products set `status` = 0 where id =@productid";
+
+            var result = await _connection.ExecuteAsync(query, new { productid = id });
+
+            return result > 0;
         }
 
-        public Task<Products> GetProductById()
+        public async Task<IEnumerable<Products>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var query = "select id, sku_number, description, creation_date, status, fn_getInventory(id) as quantity from products";
+
+            return await _connection.QueryAsync<Products>(query);             
         }
 
-        public Task<bool> SaveProduct(Products p)
+        public async Task<Products> GetProductById(int id)
         {
-            throw new NotImplementedException();
+            var query = "select id, sku_number, description, creation_date, status, fn_getInventory(id) as quantity from products where id = @productid";
+            return await _connection.QueryFirstOrDefaultAsync<Products>(query,new {productid = id });
         }
 
-        public Task<bool> UpdateProduct(Products p)
+        public async Task<Products> GetProductBySku(string sku)
         {
-            throw new NotImplementedException();
+            var query = "select id, sku_number, description, creation_date, status, fn_getInventory(id) as quantity from products where sku_number = @Sku";
+            return await _connection.QueryFirstOrDefaultAsync<Products>(query, new { Sku = sku });
+        }
+
+        public async Task<bool> SaveProduct(Products p)
+        {
+            var query = @"CALL sp_InsertProduct(@Sku,@Description,@ProductStatus,@Quantity);";
+
+            var result = await _connection.ExecuteAsync(query, new { Sku = p.sku_number, Description = p.description, ProductStatus = 1, Quantity =p.quantity});
+
+            return result > 0;
+        }
+
+        public async Task<bool> UpdateProduct(Products p)
+        {
+            var query = @"update products set sku_number @sku_number, description = @description, status =  @status
+                          where id = @id";
+
+            var result = await _connection.ExecuteAsync(query, p);
+
+            return result > 0;
         }
     }
 }

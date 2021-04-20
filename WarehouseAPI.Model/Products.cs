@@ -14,7 +14,7 @@ namespace WarehouseAPI.Model
         public string sku_number { get; set; }
         [Required]
         public string description { get; set; }
-        public DateTime dateTime { get; set; }
+        public DateTime creation_date { get; set; }
         public bool status { get; set; }
         public int quantity { get; set; }
     }

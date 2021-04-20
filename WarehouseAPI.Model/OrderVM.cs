@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace WarehouseAPI.Model
 {
-    public class Order
+    public class OrderVM
     {
-        public int id { get; set; }
+        public int OrderId { get; set; }
         public DateTime creation_date { get; set; }
         public DateTime complete_date { get; set; }
         public DateTime cancel_date { get; set; }
-        public OrderStatus status { get; set; }
-        public IEnumerable<OrderDetail> items { get; set; }
+        public OrderStatus status_code { get; set; }
+        public string status_name => status_code.ToString();
+        public IEnumerable<OrderDetailVM> order_items { get; set; }
     }
 }

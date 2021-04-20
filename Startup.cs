@@ -31,7 +31,7 @@ namespace WarehouseAPI
 
             services.AddControllers();
 
-            services.AddSingleton<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:Default"]));
+            services.AddTransient<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:Default"]));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IInventoryRepository, InventoryRepository>();
