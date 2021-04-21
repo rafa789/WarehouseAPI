@@ -57,10 +57,10 @@ namespace WarehouseAPI.Data.Repositories
 
         public async Task<bool> UpdateProduct(Products p)
         {
-            var query = @"update products set sku_number @sku_number, description = @description, status =  @status
+            var query = @"update products set sku_number = @sku_number, description = @description, status =  @status
                           where id = @id";
 
-            var result = await _connection.ExecuteAsync(query, p);
+            var result = await _connection.ExecuteAsync(query, new { sku_number = p.sku_number, description = p.description, status = p.status, id =p.id  });
 
             return result > 0;
         }
